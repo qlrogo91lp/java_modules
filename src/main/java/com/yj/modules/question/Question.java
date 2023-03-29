@@ -1,5 +1,6 @@
-package com.yj.modules.mvc.domain;
+package com.yj.modules.question;
 
+import com.yj.modules.answer.Answer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +30,14 @@ public class Question {
 
     private LocalDateTime createDate;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+    /**
+        JPA default fetch strategy
+
+        - OneToMany: Lazy
+        - ManyToOne: Eager
+        - ManyToMany: Lazy
+        - OneToOne: Eager
+     */
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
 }

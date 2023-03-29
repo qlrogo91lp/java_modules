@@ -1,5 +1,6 @@
-package com.yj.modules.mvc.domain;
+package com.yj.modules.answer;
 
+import com.yj.modules.question.Question;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

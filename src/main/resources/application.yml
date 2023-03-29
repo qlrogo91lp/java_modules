@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  devtools:
+    restart:
+      enabled: true
+  thymeleaf:
+    cache: false
+  datasource:
+    url: jdbc:mariadb://localhost:3306/modules
+    driverClassName: org.mariadb.jdbc.Driver
+    username: admin
+    password: admin
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        ddl-auto: update
+        show_sql: false
+        format_sql: false
+        use_sql_comments: false
+
+logging:
+  level:
+    root: info
