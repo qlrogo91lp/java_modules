@@ -1,0 +1,22 @@
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml" lang="ko">
+    <div layout:fragment="content" class="container">
+        <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+        <!-- 오류를 표시하기 위해서는 타임리프의 th:object 속성이 반드시 필요하다.
+            th:object를 사용하여 폼의 속성들이 QuestionForm의 속성들로 구성된다는 점을 타임리프 엔진에 알려줘야 하기 때문이다. -->
+        <form th:action="@{/question/create}" th:object="${questionForm}" method="post">
+            <!-- form_errors.html > formErrorsFragment -->
+            <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+            <!-- th:field 속성은 id, name, value 속성을 자동 생성되고 기존 값을 채워 넣어 오류가 발생하더라도 기존 값 유지.
+                 input 태그에 사용 -->
+            <div class="mb-3">
+                <label for="subject" class="form-label">제목</label>
+                <input type="text" id="subject" th:field="*{subject}" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">내용</label>
+                <textarea id="content" th:field="*{content}" class="form-control" rows="10"></textarea>
+            </div>
+            <input type="submit" value="저장하기" class="btn btn-primary my-2">
+        </form>
+    </div>
+</html>

@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
-</head>
-<body>
-    <div class="container my-3">
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml" lang="ko">
+    <div layout:fragment="content" class="container my-3">
         <table class="table">
             <thead class="table-dark">
             <tr>
@@ -28,6 +20,6 @@
             </tr>
             </tbody>
         </table>
+        <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
     </div>
-</body>
 </html>
