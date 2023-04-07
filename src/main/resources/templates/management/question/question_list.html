@@ -9,17 +9,47 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="question, loop : ${questionList}">
-                <td th:text="${loop.count}"></td>
+            <!-- 타임리프는 문자열을 연결(concatenation)할 때 | 문자를 사용한다. -->
+            <!-- #temporals.format(날짜객체, 날짜포맷) -->
+            <!-- #list.size(이터러블객체)는 이터러블 객체의 사이즈를 반환하는 타임리프의 유틸리티이다. -->
+            <tr th:each="question, loop : ${paging}">
+                <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
                 <td>
-                    <!-- 타임리프는 문자열을 연결(concatenation)할 때 | 문자를 사용한다. -->
                     <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
+                    <span class="text-danger small ms-2"
+                          th:if="${#lists.size(question.answerList) > 0}"
+                          th:text="${#lists.size(question.answerList)}">
+                    </span>
                 </td>
-                <!-- #temporals.format(날짜객체, 날짜포맷) -->
                 <td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>
             </tr>
             </tbody>
         </table>
+        <!-- 페이징처리 시작 -->
+        <!-- th:classappend="조건식 ? 클래스값" 속성은 조건식이 참인 경우 클래스값을 class 속성에 추가한다. -->
+        <!-- #numbers.sequence(시작, 끝)은 시작 번호부터 끝 번호까지의 루프를 만들어 내는 타임리프의 유틸리티이다 -->
+        <div th:if="${!paging.isEmpty()}">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
+                    <a class="page-link"
+                       th:href="@{|?page=${paging.number-1}|}">
+                        <span>이전</span>
+                    </a>
+                </li>
+                <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+                    th:if="${page >= paging.number-5 and page <= paging.number+5}"
+                    th:classappend="${page == paging.number} ? 'active'"
+                    class="page-item">
+                    <a th:text="${page+1}" class="page-link" th:href="@{|?page=${page}|}"></a>
+                </li>
+                <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
+                    <a class="page-link" th:href="@{|?page=${paging.number+1}|}">
+                        <span>다음</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- 페이징처리 끝 -->
         <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
     </div>
 </html>
