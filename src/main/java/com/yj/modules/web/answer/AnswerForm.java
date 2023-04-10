@@ -1,4 +1,4 @@
-package com.yj.modules.answer;
+package com.yj.modules.web.answer;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;

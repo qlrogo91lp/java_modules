@@ -1,6 +1,6 @@
-package com.yj.modules.question;
+package com.yj.modules.web.question;
 
-import com.yj.modules.answer.Answer;
+import com.yj.modules.web.answer.Answer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
-package com.yj.modules.answer;
+package com.yj.modules.web.answer;
 
-import com.yj.modules.question.Question;
+import com.yj.modules.web.question.Question;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

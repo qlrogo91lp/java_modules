@@ -1,7 +1,7 @@
-package com.yj.modules.answer;
+package com.yj.modules.web.answer;
 
-import com.yj.modules.question.Question;
-import com.yj.modules.question.QuestionService;
+import com.yj.modules.web.question.Question;
+import com.yj.modules.web.question.QuestionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -29,7 +29,7 @@ public class AnswerController {
         Question question = this.questionService.getQuestion(id);
         if (bindingResult.hasErrors()) {
             model.addAttribute("question", question);
-            return "/management/question/question_detail";
+            return "web/question/question_detail";
         }
         this.answerService.create(question, answerForm.getContent());
 

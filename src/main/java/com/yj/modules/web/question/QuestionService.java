@@ -1,4 +1,4 @@
-package com.yj.modules.question;
+package com.yj.modules.web.question;
 
 import com.yj.modules.common.DataNotFoundException;
 import lombok.RequiredArgsConstructor;

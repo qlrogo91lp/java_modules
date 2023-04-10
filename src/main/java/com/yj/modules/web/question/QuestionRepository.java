@@ -1,4 +1,4 @@
-package com.yj.modules.question;
+package com.yj.modules.web.question;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,4 +1,4 @@
-package com.yj.modules.answer;
+package com.yj.modules.web.answer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

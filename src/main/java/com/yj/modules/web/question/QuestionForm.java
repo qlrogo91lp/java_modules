@@ -1,4 +1,4 @@
-package com.yj.modules.question;
+package com.yj.modules.web.question;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;

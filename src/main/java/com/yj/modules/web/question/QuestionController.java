@@ -1,6 +1,6 @@
-package com.yj.modules.question;
+package com.yj.modules.web.question;
 
-import com.yj.modules.answer.AnswerForm;
+import com.yj.modules.web.answer.AnswerForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ public class QuestionController {
         Page<Question> paging = this.questionService.getList(page);
         model.addAttribute("paging", paging);
 
-        return "management/question/question_list";
+        return "web/question/question_list";
     }
 
     @GetMapping(value = "/detail/{id}")
@@ -34,7 +34,7 @@ public class QuestionController {
         Question question = this.questionService.getQuestion(id);
         model.addAttribute("question", question);
 
-        return "management/question/question_detail";
+        return "web/question/question_detail";
     }
 
     /**
@@ -43,7 +43,7 @@ public class QuestionController {
      */
     @GetMapping("/create")
     public String questionCreate(QuestionForm questionForm) {
-        return "management/question/question_form";
+        return "web/question/question_form";
     }
 
     /**
@@ -55,7 +55,7 @@ public class QuestionController {
     public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult) {
                                 // @RequestParam String subject, @RequestParam String content
         if (bindingResult.hasErrors()) {
-            return "management/question/question_form";
+            return "web/question/question_form";
         }
         this.questionService.create(questionForm.getSubject(), questionForm.getContent());
         return "redirect:/question/list"; // 질문 저장후 질문목록으로 이동

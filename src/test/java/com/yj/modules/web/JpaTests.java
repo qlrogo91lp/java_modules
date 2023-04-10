@@ -1,10 +1,10 @@
-package com.yj.modules;
+package com.yj.modules.web;
 
-import com.yj.modules.answer.Answer;
-import com.yj.modules.question.Question;
-import com.yj.modules.answer.AnswerRepository;
-import com.yj.modules.question.QuestionRepository;
-import com.yj.modules.question.QuestionService;
+import com.yj.modules.web.answer.Answer;
+import com.yj.modules.web.question.Question;
+import com.yj.modules.web.answer.AnswerRepository;
+import com.yj.modules.web.question.QuestionRepository;
+import com.yj.modules.web.question.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
